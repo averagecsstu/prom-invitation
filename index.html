@@ -24,7 +24,7 @@
             overflow: hidden;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
             background-color: #fff;
-            padding-top: 20px; /* Tüm görselleri aşağı kaydır */
+            padding-top: 130px; /* Tüm görselleri aşağı kaydır */
         }
 
         img {
@@ -32,14 +32,14 @@
             height: auto;
             display: block;
             border-bottom: 1px solid #ddd;
-            padding-top: 300px; /* Görsellerin üstüne boşluk ekle */
+            margin: 0; /* Resimler arasında boşluk olmaması için */
         }
 
         @media (min-width: 768px) { /* Masaüstü boyutları için */
             .container {
                 flex-direction: row; /* Yan yana yerleştir */
                 max-width: none; /* Genişliği sınırsız yap */
-                padding-top: 30px; /* Masaüstünde de biraz aşağı kaydır */
+                padding-top: 380px; /* Masaüstünde de biraz aşağı kaydır */
             }
 
             img {

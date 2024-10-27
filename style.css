@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+:root {
+  --primary: #fff;
+  --bg-color: rgb(5, 53, 61);
+  --bg-envelope-color: #f5edd1;
+  --envelope-tab: #ecdeb8;
+  --envelope-cover: #e6cfa7;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: rgb(141, 15, 19);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevents overflow */
+  height: 100vh; /* Ensure body takes full height */
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+}
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 230px;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 130px solid var(--envelope-tab);
+  border-right: 150px solid transparent;
+  border-left: 150px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+
+.envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  border-top: 130px solid transparent;
+  border-right: 150px solid var(--envelope-cover);
+  border-bottom: 100px solid var(--envelope-cover);
+  border-left: 150px solid var(--envelope-cover);
+}
+
+.letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 54%;
+  height: 80%;
+  background: var(--primary);
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px var(--shadow-color);
+  padding: 20px 10px;
+}
+
+.text {
+  font-family: 'Playwrite GB S', sans-serif;
+  color: var(--txt-color);
+  text-align: left;
+  font-size: 8px;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px; /* Adjusted size */
+  height: 40px; /* Adjusted size */
+  background: var(--heart-color);
+  border-radius: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%); /* Center the circle */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 6px var(--shadow-color);
+}
+
+.circle:hover {
+  transform: translate(-50%, -50%) scale(1.1); /* Smooth hover animation */
+}
+
+.flap > .envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.flap > .envelope > .letter {
+  bottom: 100px;
+  transform: scale(1.5);
+  transition-delay: 1s;
+}
+
+/* Background Images */
+@media (max-width: 768px) { /* Phone background */
+  body {
+      background-image: url('img/phone.png');
+      background-size: cover; /* Ensures the background covers the screen */
+      background-position: center; /* Center the background */
+      background-repeat: no-repeat; /* Prevent background from repeating */
+  }
+}
+
+@media (min-width: 769px) { /* PC background */
+  body {
+      background-image: url('img/pc.png');
+      background-size: cover; /* Ensures the background covers the screen */
+      background-position: center; /* Center the background */
+      background-repeat: no-repeat; /* Prevent background from repeating */
+  }
+}

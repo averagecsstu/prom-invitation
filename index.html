@@ -2,62 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prom Invitation</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Üst kenara yasla */
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column; /* Varsayılan olarak alt alta */
-            max-width: 375px; /* Telefon genişliği */
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            margin-top: 0; /* Üstte boşluk olmasın */
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid #ddd;
-            margin: 0; /* Resimler arasında boşluk olmaması için */
-        }
-
-        @media (min-width: 768px) { /* Masaüstü boyutları için */
-            .container {
-                flex-direction: row; /* Yan yana yerleştir */
-                max-width: none; /* Genişliği sınırsız yap */
-            }
-
-            img {
-                width: 50%; /* Yan yana yarı yarıya genişlik */
-                height: auto; /* Görsellerin oranını koru */
-                border-bottom: none; /* Alt çizgiyi kaldır */
-                border-right: 1px solid #ddd; /* Aralarına çizgi ekle */
-            }
-
-            img:last-child {
-                border-right: none; /* Son görüntüdeki çizgiyi kaldır */
-            }
-        }
-    </style>
+    <title>CSS Envelope + Letter (Open/Close on Click)</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
-        <img src="img/2.png" alt="Prom Invitation 1">
-        <img src="img/3.png" alt="Prom Invitation 2">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>29 Ekim Cumhuriyet Balosuna Davetlisiniz!</strong>
+                        <p>
+                            28 Ekim 2024 19.00 tarihinde yemekhanede gerçekleşecek olan Cumhuriyet Balosuna Davetlisiniz!
+                        </p>
+                        <p>
+                            Güzel bir gece geçirmeniz dileğiyle!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="circle"></div>
+        </div>
     </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
 </body>
 </html>

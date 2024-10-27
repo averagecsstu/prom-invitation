@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom Invitation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* Varsayılan olarak alt alta */
+            max-width: 375px; /* Telefon genişliği */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding-top: 20px; /* Tüm görselleri aşağı kaydır */
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            padding-top: 650px; /* Görsellerin üstüne boşluk ekle */
+        }
+
+        @media (min-width: 768px) { /* Masaüstü boyutları için */
+            .container {
+                flex-direction: row; /* Yan yana yerleştir */
+                max-width: none; /* Genişliği sınırsız yap */
+                padding-top: 30px; /* Masaüstünde de biraz aşağı kaydır */
+            }
+
+            img {
+                width: 50%; /* Yan yana yarı yarıya genişlik */
+                height: auto; /* Görsellerin oranını koru */
+                border-bottom: none; /* Alt çizgiyi kaldır */
+                border-right: 1px solid #ddd; /* Aralarına çizgi ekle */
+            }
+
+            img:last-child {
+                border-right: none; /* Son görüntüdeki çizgiyi kaldır */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/2.png" alt="Prom Invitation 1">
+        <img src="img/3.png" alt="Prom Invitation 2">
+    </div>
+</body>
+</html>

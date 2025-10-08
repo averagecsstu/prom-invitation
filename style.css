@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
 
 :root {
   --primary: #fff;
@@ -32,12 +32,14 @@ body {
 .envelope-wrapper {
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
+  position: relative;
 }
 
 .envelope {
   position: relative;
   width: 300px;
   height: 230px;
+  overflow: visible;
 }
 
 .envelope::before {
@@ -49,7 +51,7 @@ body {
   border-right: 150px solid transparent;
   border-left: 150px solid transparent;
   transform-origin: top;
-  transition: all 0.5s ease-in-out 0.7s;
+  transition: transform 0.67s ease;
 }
 
 .envelope::after {
@@ -62,23 +64,29 @@ body {
   border-right: 150px solid var(--envelope-cover);
   border-bottom: 100px solid var(--envelope-cover);
   border-left: 150px solid var(--envelope-cover);
+  transition: opacity 0.5s ease;
 }
 
 .letter {
-  position: absolute;
-  right: 20%;
-  bottom: 0;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center center;
   width: 54%;
   height: 80%;
   background: var(--primary);
   text-align: center;
-  transition: all 1s ease-in-out;
+  transition: all 0.67s ease;
   box-shadow: 0 0 5px var(--shadow-color);
   padding: 20px 10px;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .text {
-  font-family: 'Playwrite GB S', sans-serif;
+  font-family: 'Merriweather', serif;
   color: var(--txt-color);
   text-align: left;
   font-size: 8px;
@@ -94,7 +102,7 @@ body {
   border-radius: 50%;
   z-index: 4;
   transform: translate(-50%, -50%); /* Center the circle */
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.5s ease;
   cursor: pointer;
   box-shadow: 0 1px 6px var(--shadow-color);
 }
@@ -103,32 +111,87 @@ body {
   transform: translate(-50%, -50%) scale(1.1); /* Smooth hover animation */
 }
 
-.flap > .envelope:before {
+/* Open state - envelope flap opens */
+.open .envelope::before {
   transform: rotateX(180deg);
-  z-index: 0;
 }
 
-.flap > .envelope > .letter {
-  bottom: 100px;
-  transform: scale(1.5);
-  transition-delay: 1s;
+/* Open state - show letter fullscreen */
+.open .envelope > .letter {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  overflow: auto;
+  padding: 4vh 5vw;
+  width: min(820px, 92vw);
+  max-height: 90vh;
+  height: auto;
+}
+
+.open .text {
+  font-size: clamp(14px, 1.9vw, 18px);
+  line-height: 1.65;
+}
+
+.open .envelope::after,
+.open .circle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.06);
+}
+
+.open .close-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Background Images */
 @media (max-width: 768px) { /* Phone background */
   body {
-      background-image: url('img/phone.png');
-      background-size: cover; /* Ensures the background covers the screen */
-      background-position: center; /* Center the background */
+      background-image: url('img/background-phone.png');
+      background-size: cover; /* Fill screen without gaps */
+      background-position: center center; /* Center the background */
       background-repeat: no-repeat; /* Prevent background from repeating */
+      background-color: #ffffff; /* Fill empty space */
+  }
+  
+  .envelope-wrapper {
+      margin-top: 15vh;
   }
 }
 
 @media (min-width: 769px) { /* PC background */
   body {
-      background-image: url('img/pc.png');
-      background-size: cover; /* Ensures the background covers the screen */
-      background-position: center; /* Center the background */
+      background-image: url('img/background.png');
+      background-size: cover; /* Fill screen without gaps */
+      background-position: center center; /* Center the background */
       background-repeat: no-repeat; /* Prevent background from repeating */
+      background-color: #ffffff; /* Fill empty space */
   }
 }

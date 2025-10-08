@@ -12,14 +12,39 @@
         <div class="envelope-wrapper">
             <div class="envelope">
                 <div class="letter">
+                    <button class="close-btn" aria-label="Close">×</button>
                     <div class="text">
-                        <strong>29 Ekim Cumhuriyet Balosuna Davetlisiniz!</strong>
+                        <p>Değerli Seçmen,</p>
                         <p>
-                            28 Ekim 2024 19.00 tarihinde yemekhanede gerçekleşecek olan Cumhuriyet Balosuna davetlisiniz!
+                            Öncelikle bu broşürü elinizde bulundurarak atmış olduğunuz adımdan ötürü sizlere teşekkür ediyoruz. Her sene olduğu gibi bu
+                            senenin başkanlık seçimlerinin en önemli elementi sizlersiniz. Öyle ki seçmen olmanın, aday olmaktan daha büyük sorumluluk ve emek
+                            getirdiği bir noktadayız. Bizi tanımak istediğiniz, bu sorumlulukları yerine getirmek amacı uğruna çabaladığınız için tekrardan teşekkürler.
+                            Bizi tanımak aslında çok basit. Biraz inanç ve biraz özveriden ibaretiz. İbaret kelimesinin yanıltıcılığının yanında bu sıfatların esnekliği ve
+                            sonsuz kapasitesini, bizim bu değerlere bağlılığımızı ortaya koymak isteriz.
                         </p>
                         <p>
-                            Güzel bir gece geçirmeniz dileğiyle!
+                            Peki neye inanıyoruz, ne uğruna çalışıyoruz? İnanıyoruz ki bizim olanı biz değiştirip geliştirebiliriz. Bizim olana biz sahip çıkabiliriz.
+                            Öğrencilik bir kültürse bu kültürün özü korunmalı, her zaman üzerine koyularak bulunulan dönem ve var olan profile göre
+                            şekillendirilmelidir. Bizim koalisyon olarak misyonumuz ve vizyonumuz okul değerlerimizi temel alan bir işleyiş yakalamak. Bu işleyişin
+                            sizin sayenizde önemli bir parçası olmaya adayız.
                         </p>
+                        <p>
+                            Bu cümleler 2024 yılının Eylül ayına ait. O günlerden bu güne kelimelerimizin ardındaki
+                            inanç hiç değişmedi. Yalnızca büyüdü, derinleşti, yönünü genişletti. Bugün hala aynı özveriyle, aynı
+                            inançla yola devam ediyoruz; farkımız ise bir yılın getirdiği deneyim, olgunluk ve güçlü bir ekip olma
+                            bilinci. Geçirdiğimiz bu süreç, yalnızca görev değil; bir öğrenme, birlikte üretme ve dayanışma
+                            hikâyesine dönüştü. Yakaladığımız uyum ve kararlılıkla, bu bir yıl içinde attığımız her adım bize şunu
+                            gösterdi: Topluluk Kurulu artık dönemlik bir girişim veya hedef değil, okul kültürünün ayrılmaz bir
+                            parçası ve yıllar boyu devam edecek bir inanç ateşinin atası haline geldi.
+                        </p>
+                        <p>
+                            Bugün geldiğimiz noktada yalnızca mevcut düzeni sürdürmek değil, onu daha kapsayıcı, daha üretken
+                            ve daha sürdürülebilir bir hale getirmek istiyoruz. Yeni dönemde hedefimiz toplulukların birbirinden
+                            güç aldığı, fikirlerin somut eylemlere dönüştüğü ve herkesin sesini duyurabildiği bir kurul yapısını
+                            kalıcı kılmak.
+                        </p>
+                        <p>Değişim ne bir yılda başlar ne de bir yılda biter.</p>
+                        <p>Emre & Eylül</p>
                     </div>
                 </div>
             </div>
@@ -28,8 +53,15 @@
     </div>
     <script>
         const envelope = document.querySelector('.envelope-wrapper');
+        const closeBtn = document.querySelector('.close-btn');
+        
         envelope.addEventListener('click', () => {
-            envelope.classList.toggle('flap');
+            envelope.classList.add('open');
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            envelope.classList.remove('open');
         });
     </script>
 </body>
